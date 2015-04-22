@@ -1,8 +1,9 @@
-# Reverse Pig Latin Translator
-# Input: sentence as pig latin
+# REVERSE PIG LATIN TRANSLATOR
+# Input: sentence as Pig Latin
 # Output: sentence in English (string)
 
 # ========================================================
+
 # Pseudocode
 # HELPER METHOD TO REVRESE TRANSLATE A SINGLE PIG LATIN WORD
 # 1) Check for capitalization (using helper method)
@@ -18,12 +19,16 @@
 # 2) Iterate through array & use reverse_translate_word helper method to translate each word.
 # 3) Use join() method to create sentence string.
 
+# ========================================================
+
 class ReversePigLatinTranslator
 
   def initialize
   end
 
   def reverse_translate(sentence)
+    return nil if sentence.empty?
+
     words_to_reverse_translate = sentence.split(" ")
 
     translated_sentence = words_to_reverse_translate.map! do |word|
@@ -37,10 +42,6 @@ class ReversePigLatinTranslator
     def capitalized?(word)
       word[0] == word[0].upcase
     end
-
-    # def punctuation?(word)
-    #   word.match(/[^A-Za-z0-9'\s]/) != nil
-    # end
 
     def reverse_translate_word(word)
       is_capitalized = capitalized?(word)
@@ -60,9 +61,10 @@ class ReversePigLatinTranslator
       word.capitalize! if is_capitalized
       word + punctuation
     end
-
   end
 
 p my_reverse_translator = ReversePigLatinTranslator.new
+p my_reverse_translator.reverse_translate("")
 p my_reverse_translator.reverse_translate("Ymay amenay sihay Ichaelmay Hangcay.")
-p my_reverse_translator.reverse_translate("Ometimessay, nihay hetay orningmay, 'llihay avehhay aconbay nohay oasttay orfay reakfastbay.")
+p my_reverse_translator.reverse_translate("Aconbay sihay wesomeahay! Ometimessay, nihay hetay orningmay, 'llihay avehhay aconbay nohay oasttay orfay reakfastbay.")
+p my_reverse_translator.reverse_translate("Aconbay sihay wesomeahay! Ometimessay, nihay hetay orningmay, 'llihay avehhay aconbay nohay oasttay orfay reakfastbay.") == "Bacon is awesome! Sometimes, in the morning, I'll have bacon on toast for breakfast."
